@@ -1,0 +1,5 @@
+---
+- name: Configure NTP Server
+  cisco.ios.ios_config:
+    lines:
+      - ntp server 129.6.15.28

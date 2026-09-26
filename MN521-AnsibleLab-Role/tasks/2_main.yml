@@ -5,17 +5,19 @@
       - name: "{{ router_interfaces[inventory_hostname].interface }}"
         ipv4:
           - address: "{{ router_interfaces[inventory_hostname].ip_address }}"
-    state: merged
+    state: replaced
   register: int
 
 - name: Show interface before configuration
   ansible.builtin.debug:
-    var: int.before
+    msg: "{{ int.before | default('No before value returned') }}"
 
 - name: Show generated commands
   ansible.builtin.debug:
-    var: int.commands
+    msg: "{{ int.commands | default('No commands returned') }}"
 
 - name: Show interface after configuration
   ansible.builtin.debug:
-    var: int.after
+    msg: "{{ int.after | default('No after value returned') }}"
+
+

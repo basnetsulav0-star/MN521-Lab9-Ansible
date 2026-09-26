@@ -10,4 +10,4 @@
     var: interface_result.stdout_lines
 
 - include_tasks: 2_main.yml
-
+- include_tasks: 3_main.yml
