@@ -1,0 +1,21 @@
+---
+- name: Interface Configuration
+  cisco.ios.ios_l3_interfaces:
+    config:
+      - name: "{{ router_interfaces[inventory_hostname].interface }}"
+        ipv4:
+          - address: "{{ router_interfaces[inventory_hostname].ip_address }}"
+    state: merged
+  register: int
+
+- name: Show interface before configuration
+  ansible.builtin.debug:
+    var: int.before
+
+- name: Show generated commands
+  ansible.builtin.debug:
+    var: int.commands
+
+- name: Show interface after configuration
+  ansible.builtin.debug:
+    var: int.after

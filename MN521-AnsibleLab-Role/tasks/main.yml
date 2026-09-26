@@ -8,3 +8,6 @@
 - name: Display interface details
   ansible.builtin.debug:
     var: interface_result.stdout_lines
+
+- include_tasks: 2_main.yml
+
